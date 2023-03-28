@@ -21,7 +21,7 @@ export default function SignIn() {
                         value={email}
                         onChange={(e) => setEmail(e.target.value)} />
 
-                    <input type="password" placeholder='*****'
+                    <input type="password" placeholder='*******'
                         value={password}
                         onChange={(e) => setPassword(e.target.value)} />
 
