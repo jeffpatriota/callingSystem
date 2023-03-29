@@ -9,6 +9,14 @@ export default function SignIn() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
+    function handleSubmite(e){
+        e.preventDefault();
+
+        if (name !== '' && email !== '' && password !== ''){
+            alert('FAZER CADASTRO')
+        }
+    }
+
     return (
         <div className='container-center'>
             <div className='login'>
@@ -16,7 +24,7 @@ export default function SignIn() {
                     <img src={logo} alt="Logo do sistema de chamados" />
                 </div>
 
-                <form>
+                <form onSubmit={handleSubmite}>
                     <h1>Nova Conta </h1>
                     <input type="text" placeholder='Seu nome'
                         value={name}
