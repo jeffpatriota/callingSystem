@@ -10,13 +10,13 @@ export default function SignIn() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
-    const {SignIn} = useContext(AuthContext)
+    const {signUp} = useContext(AuthContext)
 
     function handleSubmite(e){
         e.preventDefault();
 
         if (name !== '' && email !== '' && password !== ''){
-            alert('FAZER CADASTRO')
+            signUp(email, password, name)
         }
     }
 
