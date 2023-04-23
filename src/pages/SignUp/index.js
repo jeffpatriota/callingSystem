@@ -2,21 +2,21 @@ import { useState, useContext } from 'react'
 import './style.css'
 
 import logo from '../../assets/logo.png'
-import {Link} from 'react-router-dom'
-import { AuthContext } from '../../contexts/auth' 
+import { Link } from 'react-router-dom'
+import { AuthContext } from '../../contexts/auth'
 
 export default function SignIn() {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
-    const {signUp} = useContext(AuthContext)
+    const { signUp, loadingAuth } = useContext(AuthContext)
 
-    function handleSubmite(e){
+    async function handleSubmite(e) {
         e.preventDefault();
 
-        if (name !== '' && email !== '' && password !== ''){
-            signUp(email, password, name)
+        if (name !== '' && email !== '' && password !== '') {
+            await signUp(email, password, name)
         }
     }
 
@@ -41,10 +41,12 @@ export default function SignIn() {
                         value={password}
                         onChange={(e) => setPassword(e.target.value)} />
 
-                    <button type='submit'> Cadastrar </button>
+                    <button type='submit'>
+                        {loadingAuth ? 'Carregando...' : 'Cadastrar'}
+                    </button>
                 </form>
 
-                <Link to="/">Já possui uma conta? Faça login</Link> 
+                <Link to="/">Já possui uma conta? Faça login</Link>
 
             </div>
         </div>

@@ -28,7 +28,16 @@ function AuthProvider({ children }) {
                     avatarUrl: null
                 })
                     .then(() => {
-                        alert("Cadastrado com sucesso")
+
+                        let data = {
+                            uid: uid,
+                            nome: name,
+                            email: value.user.email,
+                            avatarUrl: null
+                        };
+
+                        setUser(data);
+
                         setLoadingAuth(false);
                     })
 
@@ -44,7 +53,8 @@ function AuthProvider({ children }) {
             signed: !!user,
             user,
             signIn,
-            signUp
+            signUp,
+            loadingAuth
         }}>
             {children}
         </AuthContext.Provider>
