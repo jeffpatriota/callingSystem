@@ -15,7 +15,7 @@ function AuthProvider({ children }) {
         alert("LOGADO COM SUCESSO")
     }
 
-    //Cadastrar um novo user 
+    //Cadastrar um novo usuário
     async function signUp(email, password, name) {
         setLoadingAuth(true);
 
