@@ -19,32 +19,32 @@ export default function SignIn() {
         }
     }
 
-        return (
-            <div className='container-center'>
-                <div className='login'>
-                    <div className='login-area'>
-                        <img src={logo} alt="Logo do sistema de chamados" />
-                    </div>
+    return (
+        <div className='container-center'>
+            <div className='login'>
+                <div className='login-area'>
+                    <img src={logo} alt="Logo do sistema de chamados" />
+                </div>
 
-                    <form onSubmit={handleSignIn}>
-                        <h1>Entrar</h1>
-                        <input type="text" placeholder='email'
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)} />
+                <form onSubmit={handleSignIn}>
+                    <h1>Entrar</h1>
+                    <input type="text" placeholder='email'
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)} />
 
-                        <input type="password" placeholder='*******'
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)} />
+                    <input type="password" placeholder='*******'
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)} />
 
-                        
+
                     <button type='submit'>
                         {loadingAuth ? 'Carregando...' : 'Acessar'}
                     </button>
-                    </form>
+                </form>
 
-                    <Link to="/register">Criar uma conta</Link>
+                <Link to="/register">Criar uma conta</Link>
 
-                </div>
             </div>
-        )
-        }
+        </div>
+    )
+}
