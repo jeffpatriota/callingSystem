@@ -1,34 +1,34 @@
 import { useContext } from 'react'
 import avatarImg from '../../assets/avatar.png'
-
 import { Link } from 'react-router-dom'
 
 import { AuthContext } from '../../contexts/auth'
-import { FiHome, FiUser, FiSettings } from 'react-icons/fi'                       
+import { FiHome, FiUser, FiSettings } from 'react-icons/fi'
 import './style.css';
 
-export default function Header() {
-    const { user } = useContext(AuthContext)
-    return (
-        <div className="sidebar">
-            <img src={user.avatarUrl === null ? avatarImg : user.avatarUrl} alt="Foto do usuario" />
+export default function Header(){
+  const { user } = useContext(AuthContext);
 
-            <Link to="/dashboard">
-                <FiHome color="#fff" size={24} />
-                Chamados
-            </Link>
+  return(
+    <div className="sidebar">
+      <div>
+        <img src={user.avatarUrl === null ? avatarImg : user.avatarUrl} alt="Foto do usuario" />
+      </div>
 
-            <Link to="/customers">
-                <FiUser color="#fff" size={24} />
-                Clientes
-            </Link>
+      <Link to="/dashboard">
+        <FiHome color="#FFF" size={24} />
+        Chamados
+      </Link>
 
-            <Link to="/profile">
-                < FiSettings color="#fff" size={24} />
-                Perfil
-            </Link>
+      <Link to="/customers">
+        <FiUser color="#FFF" size={24} />
+        Clientes
+      </Link>
 
-        </div>
-
-    )
+      <Link to="/profile">
+        <FiSettings color="#FFF" size={24} />
+        Perfil
+      </Link>
+    </div>
+  )
 }
