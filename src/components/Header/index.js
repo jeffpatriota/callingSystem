@@ -1,9 +1,10 @@
 import { useContext } from 'react'
 import avatarImg from '../../assets/avatar.png'
+
 import { Link } from 'react-router-dom'
 
 import { AuthContext } from '../../contexts/auth'
-import { FiHome, FiUser, FiSettings } from 'react-icons/fi'
+import { FiHome, FiUser, FiSettings } from 'react-icons/fi'                       
 import './style.css';
 
 export default function Header() {
