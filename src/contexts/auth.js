@@ -122,3 +122,6 @@ function AuthProvider({ children }) {
 }
 
 export default AuthProvider;
+
+//Foi alterado no git Bash o email e o nome para verificar se o arquivo sobe para o 
+//git hub 
