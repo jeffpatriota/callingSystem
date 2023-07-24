@@ -9,8 +9,10 @@ import { Link } from 'react-router-dom'
 import {collection, getDocs, orderBy, limit, startAfter, query} from 'firebase/firestore'
 import { db } from '../../services/firebaseConnection'
 
+import { format } from 'date-fns'
+
 import './style.css'
-import { list } from 'firebase/storage'
+//import { list } from 'firebase/storage'
 
 const listRef = collection(db, "chamados")
 
@@ -26,6 +28,8 @@ export default function Dashboard() {
       const q = query(listRef, orderBy('created', 'desc'), limit(5));
 
       const querySnapshot = await getDocs(q)
+      setChamados([]);
+
       await updateState(querySnapshot)
 
       setLoading(false);
@@ -49,6 +53,7 @@ export default function Dashboard() {
           cliente: doc.data().cliente,
           clienteId: doc.data().clienteId,
           created: doc.data().cliencreatedte,
+          createdFormat: format(doc.data().created.toDate(), 'dd/mm/yyyy'),
           status: doc.data().status,
           complemento: doc.data().complemento,
         })
@@ -61,6 +66,24 @@ export default function Dashboard() {
     }
 
   }
+
+  if(loading){
+    return(
+      <div>
+        <header/>
+        <div className="content">
+          <Title nome= "Tickets">
+          <FiMessageSquare size={25} />
+          </Title>
+
+          <div className="container dashboard">
+            <span>Buscando chamados...</span>
+          </div>
+        </div>
+      </div>
+    )
+  }
+
   return (
     <div>
       <Header />
@@ -97,15 +120,17 @@ export default function Dashboard() {
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td data-label="Cliente">Mercado Esquina</td>
-                    <td data-label="Assunto">Suporte</td>
+                {chamados.map((item, index) => {
+                  return(
+                    <tr key={index}>
+                    <td data-label="Cliente">{item.cliente}</td>
+                    <td data-label="Assunto">{item.assunto}</td>
                     <td data-label="Status">
                       <span className="badge" style={{ backgroundColor: '#999' }}>
-                        Em Aberto
+                        {item.status}
                       </span>
                     </td>
-                    <td data-label="Cadastrado">04/05/2023</td>
+                    <td data-label="Cadastrado">{item.createdFormat}</td>
                     <td data-label="#">
                       <button className="action" style={{ backgroundColor: '#3583f6' }}>
                         <FiSearch color="#FFF" size={17} />
@@ -117,6 +142,8 @@ export default function Dashboard() {
 
                     </td>
                   </tr>
+                  )
+                })}
 
                 </tbody>
 
