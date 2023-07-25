@@ -12,7 +12,7 @@ import { ref, uploadBytes, getDownloadURL } from 'firebase/storage'
 
 import { toast } from 'react-toastify'
 
-import './style.css'
+import './style.css';
 
 export default function Profile(){
 
