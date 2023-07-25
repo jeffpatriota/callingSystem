@@ -10,7 +10,7 @@ import {collection, getDocs, getDoc, doc, addDoc} from 'firebase/firestore'
 
 import { toast } from 'react-toastify'
 
-import './style.css';
+import './style.css'
 
 const listRef = collection(db, "customers");
 

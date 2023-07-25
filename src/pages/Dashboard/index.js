@@ -1,5 +1,5 @@
-import {  useEffect, useState } from 'react'
-//import {AuthContext} from '../../contexts/auth'
+import { useContext, useEffect, useState } from 'react'
+import {AuthContext} from '../../contexts/auth'
 
 import Header from '../../components/Header'
 import Title from '../../components/Title'
@@ -16,12 +16,12 @@ import './style.css'
 const listRef = collection(db, "chamados")
 
 export default function Dashboard(){
- // const { logout } = useContext(AuthContext);
+  const { logout } = useContext(AuthContext);
 
   const [chamados, setChamados] = useState([])
   const [loading, setLoading] = useState(true);
 
-  const [isEmpty, setIsEmpty] = useState(false)
+  const [isEmpty, setIsEmpty] = useState(false)    
   const [lastDocs, setLastDocs] = useState()
   const [loadingMore, setLoadingMore] = useState(false);
 
